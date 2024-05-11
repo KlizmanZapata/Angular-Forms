@@ -33,7 +33,7 @@ export class MyValidators {
   static validateCategory(service: CategoriesService) {
     return (control: AbstractControl) => {
       const value = control.value;
-      return service.checkCategory(value)
+      return service.checkAvailability(value)
         .pipe(
           map((response: any) => {
             const isAvailable = response.isAvailable;

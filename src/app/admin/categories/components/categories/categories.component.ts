@@ -28,4 +28,17 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
+  deleteCategory(category: Category) {
+    console.log("Categoria a eliminar:", category);
+    if (category._id) { // Cambiar _id por id si ese es el nombre correcto
+      this.categoriesService.deleteCategory(category._id.toString()).subscribe(rta => { // Convert _id to string
+        this.getCategories();
+      }, error => {
+        console.error("Error al eliminar la categoría:", error);
+      });
+    } else {
+      console.error("No se encontró ID válido en la categoría:", category);
+    }
+  }
+
 }
